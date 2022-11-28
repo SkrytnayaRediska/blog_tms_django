@@ -12,7 +12,14 @@
         <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         <h1><a href="/">BLOG</a></h1>
     </div>
+
     <div class="content container">
+        {% if user.is_authenticated %}
+        <p align="right"><a href="{% url 'logout' %}">LogOut</a></p>
+        {% else %}
+        <p align="right"><a href="{% url 'signup' %}">SignUp</a></p>
+        <p align="right"><a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
         <div class="row">
             <div class="col-md-8">
             {% block content %}
